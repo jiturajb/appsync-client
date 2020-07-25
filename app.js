@@ -32,22 +32,26 @@ function graphqlFn (req, res) {
     const apiKey = aws_exports.AWS_SECRET_ACCESS_KEY;
 
     // Import gql helper and craft a GraphQL query
-    const gql = require('graphql-tag');
-    const query = gql(`
-    query aggregateData {
-        getRDSToDos {
-         ID  
-         NAME
-         DESCRIPTION
-         PRIORITY
-      }
-      getDynamoToDos {
-        id
-        name
-        description
-        priority
-      }
-    }`);
+const gql = require('graphql-tag');
+const query = gql(`
+query Aggregatedata {
+  listToDoLists { 
+    items{
+      idToDoList
+      Description
+      Type
+    }
+  }
+  
+ listToDoTables {
+    items {
+      TASKID
+      Description
+      Type
+    }
+  }
+  
+}`);
 
     const client = new AWSAppSyncClient({
         url: url,
@@ -64,20 +68,19 @@ function graphqlFn (req, res) {
         client.query({ query: query })
         //client.query({ query: query, fetchPolicy: 'network-only' })   //Uncomment for AWS Lambda
             .then(function logData(data) {
-                console.log('results of query: ', data.data.getRDSToDos[0]);
+                console.log('results of query: ', data.data.listToDoLists[0]);
                 const todos = [];
-                data.data.getDynamoToDos.forEach(element => {
+                data.data.listToDoTables.forEach(element => {
                     todos.push(element);
                 });
-                let RDSToDos = data.data.getRDSToDos.map(item => {
+                let ToDoLists = data.data.listToDoLists.map(item => {
                     return {
-                        id: item.ID,
-                        name: item.NAME,
-                        description: item.DESCRIPTION,
-                        priority: item.PRIORITY
+                        id: item.idToDoList,
+                        description: item.Description,
+                        type: item.Type
                     }
                 });
-                RDSToDos.forEach(item => {
+                ToDoLists.forEach(item => {
                   todos.push(item);
                 });
                 console.log('Final list: ', todos);
