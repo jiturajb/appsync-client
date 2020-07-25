@@ -13,13 +13,15 @@ html(lang='en')
       table.ui.celled.table.center.aligned
         thead
           tr
-            th ID
+            th Current ID
+            th Legacy ID
             th Description
             th Type
         tbody
           each todo in todos
             tr
               td #{todo.TASKID}
+              td #{todo.idToDoList}
               td #{todo.Description}
               td #{todo.Type}
 
