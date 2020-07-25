@@ -70,19 +70,24 @@ query Aggregatedata {
             .then(function logData(data) {
                 console.log('results of query: ', data.data.listToDoLists[0]);
                 const todos = [];
-                data.data.listToDoTables.forEach(element => {
-                    todos.push(element);
-                });
-                let ToDoLists = data.data.listToDoLists.map(item => {
-                    return {
-                        id: item.idToDoList,
-                        description: item.Description,
-                        type: item.Type
-                    }
-                });
-                ToDoLists.forEach(item => {
-                  todos.push(item);
-                });
+               // data.data.listToDoTables.forEach(element => {
+                //    todos.push(element);
+                // });
+                //let ToDoLists = data.data.listToDoLists.map(item => {
+                   // return {
+                     //   id: item.idToDoList,
+                       // description: item.Description,
+                       // type: item.Type
+                   // }
+                //});
+                //ToDoLists.forEach(item => {
+                 // todos.push(item);
+                // });
+				todos.push(data.data.listToDoTables.items[1]);
+				todos.push(data.data.listToDoTables.items[3]);
+				todos.push(data.data.listToDoLists.items[2]);
+				todos.push(data.data.listToDoLists.items[1]);
+
                 console.log('Final list: ', todos);
                 res.render('todo-table', { todos })
             })
