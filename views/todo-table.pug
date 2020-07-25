@@ -14,14 +14,12 @@ html(lang='en')
         thead
           tr
             th ID
-            th Name
             th Description
             th Priority
         tbody
           each todo in todos
             tr
               td #{todo.id}
-              td #{todo.name}
               td #{todo.description}
-              td #{todo.priority}
+              td #{todo.type}
 
