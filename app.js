@@ -73,13 +73,13 @@ query Aggregatedata {
                // data.data.listToDoTables.forEach(element => {
                 //    todos.push(element);
                 // });
-                let ToDoLists = data.data.listToDoLists.map(item => {
-                    return {
-                      TASKID: item.idToDoList,
-                      Description: item.Description,
-                      Type: item.Type
-                    }
-                  });
+                //let ToDoLists = data.data.listToDoLists.map(item => {
+                 //   return {
+                  //    TASKID: item.idToDoList,
+                   //   Description: item.Description,
+                    //  Type: item.Type
+                   // }
+                  // });
                 //ToDoLists.forEach(item => {
                  // todos.push(item);
                 // });
