@@ -84,9 +84,12 @@ query Aggregatedata {
                  // todos.push(item);
                 // });
 				todos.push(data.data.listToDoTables.items[1]);
-				todos.push(data.data.listToDoTables.items[3]);
+				todos.push(data.data.listToDoTables.items[3]
+				todos.push(data.data.listToDoTables.items[2]
+				todos.push(data.data.listToDoTables.items[0]);
 				todos.push(data.data.listToDoLists.items[2]);
-				todos.push(data.data.listToDoLists.items[1]);
+				todos.push(data.data.listToDoLists.items[1]
+				todos.push(data.data.listToDoLists.items[0]);
 
                 console.log('Final list: ', todos);
                 res.render('todo-table', { todos })
