@@ -68,7 +68,7 @@ query Aggregatedata {
         client.query({ query: query })
         //client.query({ query: query, fetchPolicy: 'network-only' })   //Uncomment for AWS Lambda
             .then(function logData(data) {
-                console.log('results of query: ', data.data.listToDoLists[0]);
+                // console.log('results of query: ', data.data.listToDoLists[0]);
                 const todos = [];
                // data.data.listToDoTables.forEach(element => {
                 //    todos.push(element);
